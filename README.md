@@ -3,6 +3,12 @@
 
 ---
 
-## 1.일기 쓰기 | 2.목록 보기 | 3.내용 보기 | 4.수정하기 | 5.삭제하기 | 6.파일로 저장 | 7.종료
+## Diary.java
 
--
+-   private String date;
+    private String title;
+    private String content;
+    private String access;
+    private int no;
+    
+    
