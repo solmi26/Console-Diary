@@ -118,12 +118,20 @@ class DiaryService {
             System.out.println("내용을 확인 할 일기의 날짜를 입력해주세요.");
             System.out.println("Year-Month-Day");
             String check = scanner.nextLine();
+            int counter = 0;
             for (Diary d : list) {
                 if (d.getDate().equals(check)) {
-                    System.out.println(d.getContent());
-                } else {
-                    System.out.println("존재하지 않는 날짜입니다.");
+                    counter++;
+                    if (d.getAccess().equals("비공개")) {
+                        System.out.println("열람하실 수 없습니다.");
+                    } else {
+                        System.out.println(d.getContent());
+                    }
+
                 }
+            }
+            if (counter == 0) {
+                System.out.println("해당 날짜의 일기가 없습니다.");
             }
 
         } catch (Exception e) {
@@ -222,15 +230,19 @@ class DiaryService {
             String saveDate = scanner.nextLine();
             for (Diary d : list) {
                 if (d.getDate().equals(saveDate)) {
-                    String saveTitle = d.getTitle();
-                    DataOutputStream out = new DataOutputStream(
-                            new BufferedOutputStream(new FileOutputStream(saveTitle + ".txt")));
-                    out.writeUTF(d.getDate());
-                    out.writeUTF(d.getTitle());
-                    out.writeUTF(d.getContent());
+                    if (d.getAccess().equals("비공개")) {
+                        System.out.println("비공개 게시물입니다. 저장하실 수 없습니다.");
+                    } else {
+                        String saveTitle = d.getTitle();
+                        DataOutputStream out = new DataOutputStream(
+                                new BufferedOutputStream(new FileOutputStream(saveTitle + ".txt")));
+                        out.writeUTF(d.getDate());
+                        out.writeUTF(d.getTitle());
+                        out.writeUTF(d.getContent());
 
-                    out.flush();
-                    out.close();
+                        out.flush();
+                        out.close();
+                    }
                 }
             }
 
