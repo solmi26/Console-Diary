@@ -10,6 +10,6 @@
 -   private String content;
 -   private String access;
 -   private int no;
-    - 위의 필드와 getter, setter로 구성되어있다.
+-- 위의 필드와 getter, setter로 구성되어있다.
     
     
