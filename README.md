@@ -12,4 +12,4 @@
 -   private int no;
 
 ## DiaryExample.java
-    
+**main class로 DairyExample class 객체를 생성하여 showMenu() 메소드를 통해 프로그램을 실행한다.   
